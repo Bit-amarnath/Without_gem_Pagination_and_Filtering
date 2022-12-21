@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :set_user, only: %i[show edit update destroy]
-  
+
   include Pagination
   POSTS_PER_PAGE = 5
 
   def index
-    # @users = User.all
-    @users = User.where('name || email LIKE ?', "%#{params[:filter]}%")
-    # @pagy, @users = pagy(filtered.all, items: 5)
-    @pagination, @users = paginate(collection: User.all, params: page_params)
+    filtered = User.where('name LIKE ?', "%#{params[:filter]}%").all
+    @pagination, @users = paginate(collection: filtered.all, params: page_params)
   end
 
   def show; end

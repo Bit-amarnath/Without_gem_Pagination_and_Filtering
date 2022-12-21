@@ -1,7 +1,7 @@
 <div class="w-full">
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Users</h1>
-    <div>
+    <div class="">
       <%= form_with url: users_path, method: :get, data: { controller: "form", action: "input->form#submit", turbo_frame: "users", turbo_action: "advance" } do %>
         <%= text_field_tag "filter", nil, placeholder: "Filter", class: "inline-block rounded-md border border-gray-200 outline-none px-3 py-2  w-full" %>
       <% end %>
